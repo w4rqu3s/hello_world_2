@@ -1,4 +1,4 @@
-# Hello World 2 - Chat em Tempo Real
+# Hello World - Chat em Tempo Real
 
 ## Descrição
 Hello World 2 é um sistema de chat em tempo real desenvolvido em **Ruby on Rails 8.1.1** utilizando **ActionCable** para comunicação WebSocket.  
