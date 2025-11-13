@@ -1,5 +1,6 @@
-<div class="message mb-2 p-2 border rounded">
-  <strong>Mensagem:</strong> <%= message.body %>
-  <br>
-  <small><%= message.created_at.strftime("%d/%m/%Y %H:%M:%S") %></small>
+<div class="message">
+  <div class="bubble">
+    <%= message.body %>
+    <small><%= message.created_at.strftime("%H:%M") %></small>
+  </div>
 </div>

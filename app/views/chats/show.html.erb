@@ -1,19 +1,46 @@
-<div class="container p-3">
-  <h5>Chat ##<%= @chat.id %></h5>
+<div class="container">
+  <!-- Lista de chats -->
+  <div class="chat-list">
+    <h5>Chats Disponíveis</h5>
+    <ul>
+      <% @chats.each do |chat_item| %>
+        <li>
+          <%= link_to "Chat ##{chat_item.id}", chat_path(chat_item), class: (chat_item.id == @chat.id ? "active" : "") %>
+        </li>
+      <% end %>
+    </ul>
 
-  <div class="messages-container border rounded p-2 mb-3 overflow-auto"
-       style="height: 65vh;"
-       data-controller="chat-subscription"
-       data-chat-subscription-chat-id-value="<%= @chat.id %>"
-       data-chat-subscription-target="messages">
-    <%= render @messages %>
+    <%= button_to "Criar Novo Chat", chats_path, method: :post, class: "btn" %>
   </div>
 
-  <div class="input-group">
-    <div data-controller="message-form">
-    <input data-message-form-target="input" type="text" placeholder="Digite sua mensagem..." />
-    <button data-action="click->message-form#send">Enviar</button>
-  </div>
+  <!-- Chat aberto -->
+  <div class="chat-window">
+    <!-- Cabeçalho -->
+    <div class="chat-header">
+      <%= link_to "← Voltar", root_path, class: "back-button" %>
+      <h2>Chat #<%= @chat.id %></h2>
+    </div>
 
+    <!-- Mensagens -->
+    <div class="messages-container"
+         data-controller="chat-subscription"
+         data-chat-subscription-chat-id-value="<%= @chat.id %>"
+         data-chat-subscription-target="messages">
+      <%= render @chat.messages %>
+    </div>
+
+    <!-- Campo de envio -->
+    <div class="message-input-container">
+      <div class="input-group" 
+           data-controller="message-form" 
+           data-message-form-chat-id-value="<%= @chat.id %>">
+        <input data-message-form-target="input" 
+               type="text" 
+               placeholder="Digite sua mensagem..." 
+               class="message-input" />
+        <button data-action="click->message-form#send" 
+                class="send-button">Enviar</button>
+      </div>
+    </div>
   </div>
 </div>
