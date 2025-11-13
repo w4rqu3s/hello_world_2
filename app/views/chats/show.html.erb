@@ -1,0 +1,22 @@
+<div class="container p-3">
+  <h5>Chat ##<%= @chat.id %></h5>
+
+  <div class="messages-container border rounded p-2 mb-3 overflow-auto"
+       style="height: 65vh;"
+       data-controller="chat-subscription"
+       data-chat-subscription-chat-id-value="<%= @chat.id %>"
+       data-chat-subscription-target="messages">
+    <%= render @messages %>
+  </div>
+
+  <div class="input-group">
+    <input type="text" placeholder="Digite sua mensagem..."
+           class="form-control"
+           data-chat-subscription-target="input"
+           data-action="keydown.enter->chat-subscription#sendMessage">
+    <button class="btn btn-primary"
+            data-action="click->chat-subscription#sendMessage">
+      Enviar
+    </button>
+  </div>
+</div>
