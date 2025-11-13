@@ -1,14 +1,14 @@
-<div class="container d-flex" style="height: 90vh;">
-  <div class="chat-list border-end p-3" style="width: 25%;">
+<div class="container">
+  <div class="chat-list">
     <h5>Chats Disponíveis</h5>
-    <ul class="list-unstyled">
+    <ul>
       <% @chats.each do |chat| %>
-        <li class="mb-2">
-          <%= link_to "Chat ##{chat.id}", chat_path(chat), class: "text-decoration-none" %>
+        <li>
+          <%= link_to "Chat ##{chat.id}", chat_path(chat) %>
         </li>
       <% end %>
     </ul>
 
-    <%= button_to "Criar Novo Chat", chats_path, method: :post, class: "btn btn-primary mt-3" %>
+    <%= button_to "Criar Novo Chat", chats_path, method: :post, class: "btn" %>
   </div>
 </div>
