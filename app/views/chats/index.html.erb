@@ -11,30 +11,4 @@
 
     <%= button_to "Criar Novo Chat", chats_path, method: :post, class: "btn btn-primary mt-3" %>
   </div>
-
-  <div class="chat-window flex-grow-1 p-3">
-    <% if @chat %>
-      <h5>Chat ##<%= @chat.id %></h5>
-
-      <div class="messages-container border rounded p-2 mb-3 overflow-auto"
-           style="height: 65vh;"
-           data-controller="chat-subscription"
-           data-chat-subscription-chat-id-value="<%= @chat.id %>"
-           data-chat-subscription-target="messages">
-        <%= render @messages %>
-      </div>
-
-      <div class="input-group">
-        <input type="text" id="message_body" placeholder="Digite sua mensagem..." 
-               data-action="keypress->chat-subscription#sendMessage"
-               class="form-control">
-        <button id="send_button" class="btn btn-primary"
-                data-action="click->chat-subscription#sendMessage">
-          Enviar
-        </button>
-      </div>
-    <% else %>
-      <p>Nenhum chat disponível. Clique em "Criar Novo Chat".</p>
-    <% end %>
-  </div>
 </div>
