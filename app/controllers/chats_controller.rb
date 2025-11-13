@@ -12,6 +12,6 @@ class ChatsController < ApplicationController
 
   def create
     chat = Chat.create
-    redirect_to chat_path(chat)
+    redirect_to chat
   end
 end

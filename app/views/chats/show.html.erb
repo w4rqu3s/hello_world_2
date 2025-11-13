@@ -10,13 +10,10 @@
   </div>
 
   <div class="input-group">
-    <input type="text" placeholder="Digite sua mensagem..."
-           class="form-control"
-           data-chat-subscription-target="input"
-           data-action="keydown.enter->chat-subscription#sendMessage">
-    <button class="btn btn-primary"
-            data-action="click->chat-subscription#sendMessage">
-      Enviar
-    </button>
+    <div data-controller="message-form">
+    <input data-message-form-target="input" type="text" placeholder="Digite sua mensagem..." />
+    <button data-action="click->message-form#send">Enviar</button>
+  </div>
+
   </div>
 </div>

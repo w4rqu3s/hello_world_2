@@ -1,25 +1,23 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static values = { chatId: Number }
+  static targets = ["input"]
 
   connect() {
-    this.element.addEventListener("submit", (event) => {
-      event.preventDefault()
-      const input = this.element.querySelector("input[name='message[body]']")
-      const value = input.value.trim()
-      if (value === "") return
+    console.log("✅ message_form_controller conectado")
+  }
 
-      fetch(`/chats/${this.chatIdValue}/messages`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
-        },
-        body: JSON.stringify({ message: { body: value } })
-      })
+  send(event) {
+    event.preventDefault()
+    const content = this.inputTarget.value.trim()
+    if (!content) return
+    if (window.chatChannel) {
+    window.chatChannel.send({ body: content })
+  } else {
+    console.error("Chat channel não inicializado!")
+  }
 
-      input.value = ""
-    })
+    console.log("📤 Enviando mensagem:", content)
+    this.inputTarget.value = ""
   }
 }
