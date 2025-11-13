@@ -1,24 +1,74 @@
-# README
+# Hello World 2 - Chat em Tempo Real
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Descrição
+Hello World 2 é um sistema de chat em tempo real desenvolvido em **Ruby on Rails 8.1.1** utilizando **ActionCable** para comunicação WebSocket.  
+O projeto permite criar múltiplos chats, enviar mensagens em tempo real e visualizar todas as mensagens de cada chat.
 
-Things you may want to cover:
+## Funcionalidades
+- Criação de novos chats.
+- Listagem de chats existentes.
+- Envio e recebimento de mensagens em tempo real.
+- Interface responsiva com input de envio fixo na parte inferior.
 
-* Ruby version
+## Pré-requisitos
+- Ruby 3.4.x
+- Rails 8.1.1
+- SQLite3 (para desenvolvimento)
+- Node.js + npm (para gerenciar JavaScript via esbuild)
+- Navegador moderno (Chrome, Edge, Firefox)
 
-* System dependencies
+## Configuração do Projeto
+1. Clone o repositório:
+```bash
+git clone <url-do-repositorio>
+cd hello_world_2
+````
 
-* Configuration
+2. Instale as gems:
 
-* Database creation
+```bash
+bundle install
+```
 
-* Database initialization
+3. Crie o banco de dados e rode as migrations:
 
-* How to run the test suite
+```bash
+rails db:create
+rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+4. Instale pacotes JavaScript:
 
-* Deployment instructions
+```bash
+npm install
+```
 
-* ...
+## Executando o Projeto
+
+1. Compile os assets com esbuild:
+
+```bash
+npx esbuild app/javascript/application.js --bundle --outdir=app/assets/builds --watch
+```
+
+2. Inicie o servidor Rails:
+
+```bash
+rails server
+```
+
+3. Abra o navegador e acesse:
+
+```
+http://localhost:3000
+```
+
+## Observações
+
+* O projeto foi desenvolvido apenas para fins acadêmicos.
+* Todo o código de front-end está em Stimulus + HTML/CSS puro, sem frameworks adicionais.
+
+## Autores
+
+* Victor Marques
+* Hanae Rosa
